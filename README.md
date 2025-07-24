@@ -49,48 +49,48 @@ To compile and run these test cases, you will need:
  # Test Case 1: Consecutive Growth Slabs(leak_incremental_module.ko)
  - Goal: Show your tool detecting a leak that grows incrementally over time.
  - Steps:
-   - 1. Clear dmesg: sudo dmesg -c
-   - 2. Terminal 1: Start your detector:/path/to/your/detector/your_detector_tool_executable -diff(Let it run for a few seconds to establish a baseline.)
-   - 3. Terminal 2: Load the module:sudo insmod kernel_modules/leak_incremental_module.ko
-   - 4. Terminal 2: Repeatedly trigger more leaks (wait 5-10 seconds between each for detector to poll) 
+     1. Clear dmesg: sudo dmesg -c
+     2. Terminal 1: Start your detector:/path/to/your/detector/your_detector_tool_executable -diff(Let it run for a few seconds to establish a baseline.)
+     3. Terminal 2: Load the module:sudo insmod kernel_modules/leak_incremental_module.ko
+     4. Terminal 2: Repeatedly trigger more leaks (wait 5-10 seconds between each for detector to poll) 
      - echo "1" | sudo tee /proc/incremental_leak
      - #Wait 5-10 seconds
      - echo "1" | sudo tee /proc/incremental_leak
      - #Wait 5-10 seconds
      - echo "1" | sudo tee /proc/incremental_leak
      - #Repeat 2-3 more times
-    - 5. Terminal 1: Observe your detector reporting a continuous, increasing growth in a specific slab cache (e.g., kmalloc-16K). Point out how the "total objects" or "total size" for that slab keeps going up with each new leak you trigger.
-    - 6. Terminal 2: Unload the module:sudo rmmod leak_incremental_module.ko
+      5. Terminal 1: Observe your detector reporting a continuous, increasing growth in a specific slab cache (e.g., kmalloc-16K). Point out how the "total objects" or "total size" for that slab keeps going up with each new leak you trigger.
+      6. Terminal 2: Unload the module:sudo rmmod leak_incremental_module.ko
 
 # Test Case 2: Growth Percentage (Large Single Leak) (large_single_leak_module.ko)
 - Goal: Show your tool detecting a large, sudden leak that results in a high growth percentage.
 - Steps:
-  - 1. Reboot Your System: sudo reboot (Crucial for a clean slate after the previous leak).
-  - 2. Clear dmesg: sudo dmesg -c
-  - 3. Terminal 1: Start your detector
-  - 4. Terminal 2: Load the module:sudo insmod kernel_modules/large_single_leak_module.ko
-  - 5. Terminal 1: Observe your detector reporting a massive, sudden increase in a large slab cache (e.g., kmalloc-10M). Your tool should show a very high growth percentage for this specific slab.
-  - 6. Terminal 2: Unload the module:sudo rmmod large_single_leak_module.ko
+    1. Reboot Your System: sudo reboot (Crucial for a clean slate after the previous leak).
+    2. Clear dmesg: sudo dmesg -c
+    3. Terminal 1: Start your detector
+    4. Terminal 2: Load the module:sudo insmod kernel_modules/large_single_leak_module.ko
+    5. Terminal 1: Observe your detector reporting a massive, sudden increase in a large slab cache (e.g., kmalloc-10M). Your tool should show a very high growth percentage for this specific slab.
+    6. Terminal 2: Unload the module:sudo rmmod large_single_leak_module.ko
 
 # Test Case 3: No Leak (Correct Allocation/Deallocation) (no_leak_correct_module.ko)
 - Goal: Verify your tool does not report false positives when memory is correctly managed.
 - Steps:
-  - 1. Reboot Your System: sudo reboot (For a clean slate).
-  - 2. Clear dmesg: sudo dmesg -c
-  - 3. Terminal 1: Start your detector
-  - 4. Terminal 2: Load the module:sudo insmod kernel_modules/no_leak_correct_module.ko
-  - 5. Terminal 2: Unload the module:sudo rmmod no_leak_correct_module.ko
-  - 6. Terminal 1: Observe your detector reporting no significant or persistent changes in any slab caches or vmstat counters.
+    1. Reboot Your System: sudo reboot (For a clean slate).
+    2. Clear dmesg: sudo dmesg -c
+    3. Terminal 1: Start your detector
+    4. Terminal 2: Load the module:sudo insmod kernel_modules/no_leak_correct_module.ko
+    5. Terminal 2: Unload the module:sudo rmmod no_leak_correct_module.ko
+    6. Terminal 1: Observe your detector reporting no significant or persistent changes in any slab caches or vmstat counters.
 
   # Test Case 4: Multiple Small, Dispersed Leaks(multiple_small_leaks_module.ko)
   - Goal: Test your detector's ability to track multiple leaks across different slab sizes.
   - Steps:
-    - 1. Reboot Your System: sudo reboot (For a clean slate).
-    - 2. Clear dmesg: sudo dmesg -c
-    - 3. Terminal 1: Start your detector
-    - 4. Terminal 2: Load the module:sudo insmod kernel_modules/multiple_small_leaks_module.ko
-    - 5. Terminal 2: Unload the module:sudo rmmod multiple_small_leaks_module.ko
-    - 6. Terminal 1: Observe your detector reporting persistent increases in several different slab caches (e.g., kmalloc-32, kmalloc-64, kmalloc-1K, kmalloc-16K, etc.).
+      1. Reboot Your System: sudo reboot (For a clean slate).
+      2. Clear dmesg: sudo dmesg -c
+      3. Terminal 1: Start your detector
+      4. Terminal 2: Load the module:sudo insmod kernel_modules/multiple_small_leaks_module.ko
+      5. Terminal 2: Unload the module:sudo rmmod multiple_small_leaks_module.ko
+      6. Terminal 1: Observe your detector reporting persistent increases in several different slab caches (e.g., kmalloc-32, kmalloc-64, kmalloc-1K, kmalloc-16K, etc.).
 
     # Test Case 5: Transient Allocation (transient_alloc_module.ko)
 - Goal: Show that very short-lived, correctly managed allocations don't trigger leak alerts.
