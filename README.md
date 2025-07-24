@@ -19,7 +19,7 @@ To compile and run these test cases, you will need:
  1. Clone this Repository:
   - git clone https://github.com/your-username/Kernel-Memory-Leak-Detection-Tests.git (Replace your-username with your actual GitHub username).
   - cd Kernel-Memory-Leak-Detection-Tests
-- 2. Compile the Kernel Modules:
+ 2. Compile the Kernel Modules:
   - Navigate into the kernel_modules directory:
     - cd kernel_modules
   - Run make to compile the .c files into kernel object (.ko) files:
@@ -31,7 +31,7 @@ To compile and run these test cases, you will need:
     - multiple_small_leaks_module.ko
     - transient_alloc_module.ko
   - You can return to the root of the repository: cd ..
-- 3. Ensure Your Detector is Ready:
+ 3. Ensure Your Detector is Ready:
   - Make sure your Kernel-Memory-Leak-Detection tool is compiled and its executable is accessible (e.g., in a build/ directory within its own repository). You will run this tool in a separate terminal during testing.
 
   # Running the Test Cases (Demonstration Guide)
