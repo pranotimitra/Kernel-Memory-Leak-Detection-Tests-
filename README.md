@@ -95,9 +95,9 @@ To compile and run these test cases, you will need:
     # Test Case 5: Transient Allocation (transient_alloc_module.ko)
 - Goal: Show that very short-lived, correctly managed allocations don't trigger leak alerts.
 - Steps:
-  - 1. Reboot Your System: sudo reboot (For a clean slate).
-  - 2. Clear dmesg: sudo dmesg -c
-  - 3. Terminal 1: Start your detector
-  - 4. Terminal 2: Load the module:sudo insmod kernel_modules/transient_alloc_module.ko
-  - 5. Terminal 2: Unload the module:sudo rmmod transient_alloc_module.ko
-  - 6. Terminal 1: Observe your detector reporting no significant or persistent changes. If your tool's polling interval is slow enough, it might not even catch the momentary allocation.
+    1. Reboot Your System: sudo reboot (For a clean slate).
+    2. Clear dmesg: sudo dmesg -c
+    3. Terminal 1: Start your detector
+    4. Terminal 2: Load the module:sudo insmod kernel_modules/transient_alloc_module.ko
+    5. Terminal 2: Unload the module:sudo rmmod transient_alloc_module.ko
+    6. Terminal 1: Observe your detector reporting no significant or persistent changes. If your tool's polling interval is slow enough, it might not even catch the momentary allocation.
