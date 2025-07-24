@@ -53,12 +53,12 @@ To compile and run these test cases, you will need:
      2. Terminal 1: Start your detector:/path/to/your/detector/your_detector_tool_executable -diff(Let it run for a few seconds to establish a baseline.)
      3. Terminal 2: Load the module:sudo insmod kernel_modules/leak_incremental_module.ko
      4. Terminal 2: Repeatedly trigger more leaks (wait 5-10 seconds between each for detector to poll) 
-       - echo "1" | sudo tee /proc/incremental_leak
-       - #Wait 5-10 seconds
-       - echo "1" | sudo tee /proc/incremental_leak
-       - #Wait 5-10 seconds
-       -  echo "1" | sudo tee /proc/incremental_leak
-       - #Repeat 2-3 more times
+        - echo "1" | sudo tee /proc/incremental_leak
+        - #Wait 5-10 seconds
+        - echo "1" | sudo tee /proc/incremental_leak
+        - #Wait 5-10 seconds
+        -  echo "1" | sudo tee /proc/incremental_leak
+        - #Repeat 2-3 more times
       5. Terminal 1: Observe your detector reporting a continuous, increasing growth in a specific slab cache (e.g., kmalloc-16K). Point out how the "total objects" or "total size" for that slab keeps going up with each new leak you trigger.
       6. Terminal 2: Unload the module:sudo rmmod leak_incremental_module.ko
 
