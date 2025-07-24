@@ -85,12 +85,12 @@ To compile and run these test cases, you will need:
   # Test Case 4: Multiple Small, Dispersed Leaks(multiple_small_leaks_module.ko)
   - Goal: Test your detector's ability to track multiple leaks across different slab sizes.
   - Steps:
-      1. Reboot Your System: sudo reboot (For a clean slate).
-      2. Clear dmesg: sudo dmesg -c
-      3. Terminal 1: Start your detector
-      4. Terminal 2: Load the module:sudo insmod kernel_modules/multiple_small_leaks_module.ko
-      5. Terminal 2: Unload the module:sudo rmmod multiple_small_leaks_module.ko
-      6. Terminal 1: Observe your detector reporting persistent increases in several different slab caches (e.g., kmalloc-32, kmalloc-64, kmalloc-1K, kmalloc-16K, etc.).
+    1. Reboot Your System: sudo reboot (For a clean slate).
+    2. Clear dmesg: sudo dmesg -c
+    3. Terminal 1: Start your detector
+    4. Terminal 2: Load the module:sudo insmod kernel_modules/multiple_small_leaks_module.ko
+    5. Terminal 2: Unload the module:sudo rmmod multiple_small_leaks_module.ko
+    6. Terminal 1: Observe your detector reporting persistent increases in several different slab caches (e.g., kmalloc-32, kmalloc-64, kmalloc-1K, kmalloc-16K, etc.).
 
     # Test Case 5: Transient Allocation (transient_alloc_module.ko)
 - Goal: Show that very short-lived, correctly managed allocations don't trigger leak alerts.
