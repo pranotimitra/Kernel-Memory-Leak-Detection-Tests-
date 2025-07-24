@@ -16,7 +16,7 @@ To compile and run these test cases, you will need:
 - Your User-Space Detector Tool: The compiled executable of your Kernel-Memory-Leak-Detection project (https://github.com/ankushT369/Kernel-Memory-Leak-Detection). Ensure it's accessible from your terminal.
 
 # Setup Instructions
-- 1. Clone this Repository:
+ 1. Clone this Repository:
   - git clone https://github.com/your-username/Kernel-Memory-Leak-Detection-Tests.git (Replace your-username with your actual GitHub username).
   - cd Kernel-Memory-Leak-Detection-Tests
 - 2. Compile the Kernel Modules:
